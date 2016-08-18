@@ -1,0 +1,463 @@
+.DD-sizer {
+  position: absolute;
+  display: block;
+  z-index: 5;
+  cursor: move;
+  background: transparent;
+  outline: 1px dashed #000;
+  
+  transition: opacity 0.5s ease; }
+  .DD-sizer:after {
+    content: '';
+    position: absolute;
+    /* box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2), 0 0 0 1200px rgba(0, 0, 0, 0.5); */
+    left: -0.0625rem;
+    right: -0.0625rem;
+    top: -0.0625rem;
+    bottom: -0.0625rem; }
+  .DD-sizer.focus-container {
+    border: 0 none; }
+    .DD-sizer.focus-container:after {
+      content: none; }
+  .DD-sizer-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    top: 0;
+    left: 0;
+    z-index: 2; }
+  .DD-sizer img {
+    max-width: none; }
+  .DD-sizer .sizer-grid {
+    position: absolute;
+    background: #fff; }
+    .DD-sizer .sizer-grid.vertical-left-line {
+      left: 33.3333%;
+      width: 1px;
+      height: 100%; }
+    .DD-sizer .sizer-grid.vertical-right-line {
+      right: 33.3333%;
+      width: 1px;
+      height: 100%; }
+    .DD-sizer .sizer-grid.horizontal-top-line {
+      top: 33.3333%;
+      width: 100%;
+      height: 1px; }
+    .DD-sizer .sizer-grid.horizontal-bottom-line {
+      bottom: 33.3333%;
+      width: 100%;
+      height: 1px; }
+  .DD-sizer .focus-border {
+    position: absolute;
+    background: none;
+    width: 35%;
+    height: 35%; }
+    .DD-sizer .focus-border.top-left {
+      left: 0;
+      top: 0;
+      border-top: 10px solid #000;
+      border-left: 10px solid #000; }
+    .DD-sizer .focus-border.top-left:before {
+      content: "";
+      position: absolute;
+      top: -9px;
+      left: -9px;
+      right: 1px;
+      bottom: 1px;
+      border-top: 8px solid #fff;
+      border-left: 8px solid #fff; }
+    .DD-sizer .focus-border.top-right {
+      right: 0;
+      top: 0;
+      border-top: 10px solid #000;
+      border-right: 10px solid #000; }
+    .DD-sizer .focus-border.top-right:before {
+      content: "";
+      position: absolute;
+      top: -9px;
+      right: -9px;
+      bottom: 1px;
+      left: 1px;
+      border-top: 8px solid #fff;
+      border-right: 8px solid #fff; }
+    .DD-sizer .focus-border.bottom-right {
+      right: 0;
+      bottom: 0;
+      border-bottom: 10px solid #000;
+      border-right: 10px solid #000; }
+    .DD-sizer .focus-border.bottom-right:before {
+      content: "";
+      position: absolute;
+      top: 1px;
+      right: -9px;
+      bottom: -9px;
+      left: 1px;
+      border-right: 8px solid #fff;
+      border-bottom: 8px solid #fff; }
+    .DD-sizer .focus-border.bottom-left {
+      left: 0;
+      bottom: 0;
+      border-bottom: 10px solid #000;
+      border-left: 10px solid #000; }
+    .DD-sizer .focus-border.bottom-left:before {
+      content: "";
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      bottom: -9px;
+      left: -9px;
+      border-bottom: 8px solid #fff;
+      border-left: 8px solid #fff; }
+  .DD-sizer .goog-ui-resizable {
+    position: absolute;
+    width: 45px;
+    height: 45px; }
+    .DD-sizer .goog-ui-resizable:before {
+      content: '';
+      position: absolute;
+      background: white;
+      border: 1px solid #fff;
+      box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1);
+      width: 20px;
+      height: 20px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-10px, -10px); }
+    .DD-sizer .goog-ui-resizable-EAST {
+      right: -22.5px;
+      top: 50%;
+      margin-top: -22.5px;
+      cursor: ew-resize; }
+    .DD-sizer .goog-ui-resizable-SOUTH {
+      left: 50%;
+      bottom: -22.5px;
+      margin-left: -22.5px;
+      cursor: ns-resize; }
+    .DD-sizer .goog-ui-resizable-WEST {
+      left: -22.5px;
+      top: 50%;
+      margin-top: -22.5px;
+      cursor: ew-resize; }
+    .DD-sizer .goog-ui-resizable-NORTH {
+      left: 50%;
+      top: -22.5px;
+      margin-left: -22.5px;
+      cursor: ns-resize; }
+    .DD-sizer .goog-ui-resizable-NORTHEAST {
+      right: -22.5px;
+      top: -22.5px;
+      cursor: nesw-resize; }
+    .DD-sizer .goog-ui-resizable-NORTHWEST {
+      left: -22.5px;
+      top: -22.5px;
+      cursor: nwse-resize; }
+    .DD-sizer .goog-ui-resizable-SOUTHWEST {
+      left: -22.5px;
+      bottom: -22.5px;
+      cursor: nesw-resize; }
+    .DD-sizer .goog-ui-resizable-SOUTHEAST {
+      right: -22.5px;
+      bottom: -22.5px;
+      cursor: nwse-resize; }
+.hide {
+  display: none;
+}
+.DD-imageedit .DD-btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  z-index: 5;
+  cursor: pointer;
+  outline: none;
+  line-height: 58px;
+  text-align: center;
+  font-size: 18px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition-property: transform;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-out; }
+  .DD-imageedit .DD-btn:hover {
+    background: #ccc; }
+    .DD-imageedit .DD-btn:hover:after {
+      background: #ccc; }
+  .DD-imageedit .DD-btn:active {
+    box-shadow: inset 0 0 0 2px #000; }
+  .DD-imageedit .DD-btn:before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 1px;
+    border: 10px solid #0a0a0a;
+    position: relative;
+    transform: rotate(45deg); }
+  .DD-imageedit .DD-btn:after {
+    content: '';
+    display: block;
+    background: #f5f5f5;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    transform: rotate(45deg); }
+  .DD-imageedit .DD-btn-up {
+    top: 5px;
+    left: 50%;
+    margin-left: -29px; }
+    .DD-imageedit .DD-btn-up:before {
+      top: 5px;
+      border-bottom-color: transparent;
+      border-right-color: transparent; }
+    .DD-imageedit .DD-btn-up:after {
+      left: 12px;
+      top: 18px; }
+  .DD-imageedit .DD-btn-right {
+    top: 50%;
+    right: 5px;
+    margin-top: -29px; }
+    .DD-imageedit .DD-btn-right:before {
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      right: 5px; }
+    .DD-imageedit .DD-btn-right:after {
+      left: 6px;
+      top: 12px; }
+  .DD-imageedit .DD-btn-down {
+    bottom: 5px;
+    left: 50%;
+    margin-left: -29px; }
+    .DD-imageedit .DD-btn-down:before {
+      border-left-color: transparent;
+      border-top-color: transparent;
+      bottom: 5px; }
+    .DD-imageedit .DD-btn-down:after {
+      left: 12px;
+      top: 6px; }
+  .DD-imageedit .DD-btn-left {
+    left: 5px;
+    top: 50%;
+    margin-top: -29px; }
+    .DD-imageedit .DD-btn-left:before {
+      border-right-color: transparent;
+      border-top-color: transparent;
+      left: 5px; }
+    .DD-imageedit .DD-btn-left:after {
+      right: 6px;
+      top: 12px; }
+  .DD-imageedit .DD-btn-disabled {
+    cursor: default;
+    transform: scale(0); }
+
+.DD-imageedit-hover .DD-btn {
+  transform: scale(1); }
+  .DD-imageedit-hover .DD-btn-disabled {
+    transform: scale(0); }
+
+.DD-focus {
+    position: absolute;
+    display: block;
+    z-index: 5;
+    cursor: move;
+    background: transparent;
+    border: 1px dashed #fff;
+    transition: opacity 0.5s ease;
+}
+
+    .imageeditor-cont {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      margin: 20px auto 0;
+      border:1px solid;
+      overflow: hidden;
+    }
+    .DD-image-editor {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .DD-sizer {
+      width: 300px;
+      height: 300px;
+    }
+    .DD-focus {
+      top: 100px;
+      left: 100px;
+        position: absolute;
+        display: block;
+        z-index: 5;
+        cursor: move;
+        background: transparent;
+        transition: opacity 0.5s ease;
+    }
+    .DD-focus .goog-ui-resizable {
+      position: absolute;
+      background: none;
+      width: 35%;
+      height: 35%;
+    }
+    .DD-focus .goog-ui-resizable-SOUTHWEST {
+      right: 0;
+      bottom: 0;
+      border-bottom: 10px solid #000;
+      border-right: 10px solid #000;
+    }
+    .DD-focus .goog-ui-resizable-SOUTHWEST:after {
+      content: "";
+      position: absolute;
+      top: 1px;
+      right: -9px;
+      bottom: -9px;
+      left: 1px;
+      border-right: 8px solid #fff;
+      border-bottom: 8px solid #fff;
+    }
+    .DD-focus .goog-ui-resizable-SOUTHEAST {
+      left: 0;
+      bottom: 0;
+      border-bottom: 10px solid #000;
+      border-left: 10px solid #000;
+    }
+    .DD-focus .goog-ui-resizable-SOUTHEAST:after {
+      content: "";
+      position: absolute;
+      top: 1px;
+      right: 1px;
+      bottom: -9px;
+      left: -9px;
+      border-bottom: 8px solid #fff;
+      border-left: 8px solid #fff;
+    }
+    .DD-focus .goog-ui-resizable-NORTHWEST {
+      right: 0;
+      top: 0;
+      border-top: 10px solid #000;
+      border-right: 10px solid #000;
+    }
+    .DD-focus .goog-ui-resizable-NORTHWEST:after {
+      content: "";
+      position: absolute;
+      top: -9px;
+      right: -9px;
+      bottom: 1px;
+      left: 1px;
+      border-top: 8px solid #fff;
+      border-right: 8px solid #fff;
+    }
+    .DD-focus .goog-ui-resizable-NORTHEAST {
+      left: 0;
+      top: 0;
+      border-top: 10px solid #000;
+      border-left: 10px solid #000;
+    }
+    .DD-focus .goog-ui-resizable-NORTHEAST:after {
+      content: "";
+      position: absolute;
+      top: -9px;
+      left: -9px;
+      right: 1px;
+      bottom: 1px;
+      border-top: 8px solid #fff;
+      border-left: 8px solid #fff;
+    }
+
+    .DD-btn-up {
+        top: 5px;
+        left: 50%;
+        margin-left: -29px;
+    }
+    .DD-btn {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: #f5f5f5;
+        z-index: 5;
+        cursor: pointer;
+        outline: none;
+        line-height: 58px;
+        text-align: center;
+        font-size: 1.125rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: scale(0);
+        transition-property: transform;
+        transition-duration: 0.1s;
+        transition-timing-function: ease-out;
+    }
+    .DD-imageedit-hover .DD-btn {
+        transform: scale(1);
+    }
+    .DD-btn-right {
+        top: 50%;
+        right: 5px;
+        margin-top: -29px;
+    }
+    .DD-btn-left {
+      left: 5px;
+      top: 50%;
+      margin-top: -29px;
+    }
+    .DD-btn-down {
+        bottom: 5px;
+        left: 50%;
+        margin-left: -29px;
+    }
+
+    .DD-btn-down:before {
+        border-left-color: transparent;
+        border-top-color: transparent;
+        bottom: 5px;
+    }
+    .DD-btn:before {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 1px;
+        border: 10px solid #0a0a0a;
+        position: relative;
+        transform: rotate(45deg);
+    }
+
+    .DD-btn-down:after {
+        left: 12px;
+        top: 6px;
+    }
+    .DD-btn:after {
+        content: '';
+        display: block;
+        background: #f5f5f5;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        transform: rotate(45deg);
+    }
+    .DD-btn-disabled {
+        cursor: default;
+        transform: scale(0);
+    }
+    .DD-imageedit-hover .DD-btn.DD-btn-disabled {
+        cursor: default;
+        transform: scale(0);
+    }
+    .DD-btn-down:after {
+        left: 12px;
+        top: 1px;
+    }
+    .DD-btn-left:after {
+        right: 6px;
+        top: 12px;
+    }
+    .DD-btn-right:after {
+        left: 6px;
+        top: 12px;
+    }
+    .DD-btn-up:after {
+        left: 12px;
+        top: 18px;
+    }

@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="imageedit.css">
+    <title>Image — test page</title>
+  </head>
+<body>
+    <div>
+      <button id="upload" type="file" formenctype="multipart/form-data">Загрузить изображение</button>
+      <button id="crop">Показать сетку</button>
+      <button id="crop-hide">Спрятать сетку</button>
+      <button id="crop-action">Обрезать картинку</button>
+      <button id="rotate-left">Повернуть налево</button>
+      <button id="rotate-right">Повернуть направо</button>
+      <button id="focus">Фокус</button>
+      <button id="focus-save">Сохранить фокус</button>
+      <div id="imageeditor" class="imageeditor-cont"></div>
+    </div>
+
+  <script src="../closurelibrary/closure/goog/base.js"></script>
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+
+  <script src="deps.js"></script>
+  <script src="dist/smoothzoom/jquery.smoothZoom.min.js"></script>
+  <script src="dist/hammer.js/hammer.min.js"></script>
+  
+  
+  <script type="text/javascript">
+    goog.require('DD.ui.image.Editor');
+
+    window.onload = function()
+    {
+      var target = document.getElementById('imageeditor');
+
+      var editor = new DD.ui.image.Editor();
+      editor.render(target);
+      editor.loadImage('1.jpg');
+
+      var cropBtn = document.getElementById('crop');
+      var cropHideBtn = document.getElementById('crop-hide');
+      var cropAction = document.getElementById('crop-action');
+      var rotateRight = document.getElementById('rotate-right');
+      var rotateLeft = document.getElementById('rotate-left');
+      var focus = document.getElementById('focus');
+      var focusSave = document.getElementById('focus-save');
+
+
+      cropBtn.addEventListener('click', function()
+      {
+        editor.instrumentCrop_show();
+      });
+
+      cropHideBtn.addEventListener('click', function()
+      {
+        editor.instrumentCrop_hide();
+      });
+
+      rotateRight.addEventListener('click', function()
+      {
+        editor.blockZoom(false);
+
+        editor.instrumentRotate_rotate(1);
+      });
+
+      rotateLeft.addEventListener('click', function()
+      {
+        editor.blockZoom(false);
+
+        editor.instrumentRotate_rotate(0);
+      });
+
+      cropAction.addEventListener('click', function()
+      {
+        editor.blockZoom(false);
+        editor.instrumentCrop_crop();
+      });
+
+      focus.addEventListener('click', function()
+      {
+        editor.instrumentFocus_show();
+      });
+
+      focusSave.addEventListener('click', function()
+      {
+        var coords = editor.instrumentFocus_getFocus();
+        editor.instrumentFocus_hide();
+        if (coords)
+          alert('Фокус сохранен по координатам(x: ' + coords.focusX + ' y: ' + coords.focusY);
+      });
+
+    };
+  </script>
+
+</body>
+</html>
